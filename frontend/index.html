@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="status-dot" id="dot"></div>
+      <h1>Two-Tier App</h1>
+      <p class="sub">Docker + Jenkins Deployment</p>
+      <div class="msg-box">
+        <span id="msg">Connecting to backend...</span>
+      </div>
+      <div class="meta">
+        <span>Backend: <strong>Node.js</strong></span>
+        <span>Frontend: <strong>Nginx</strong></span>
+        <span>Deployed via: <strong>Jenkins</strong></span>
+      </div>
+    </div>
+  </div>
+  <script>
+    fetch('http://localhost:3000/api/message')
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById('msg').textContent = data.message;
+        document.getElementById('dot').classList.add('online');
+      })
+      .catch(() => {
+        document.getElementById('msg').textContent = 'Backend unreachable';
+        document.getElementById('dot').classList.add('offline');
+      });
+  </script>
+</body>
+</html>
