@@ -98,7 +98,7 @@ The automated pipeline follows three stages:
 
 ### Pipeline Trigger Flow
 ```
-Code Push → GitHub Webhook → Jenkins Pipeline → Build Images → Deploy Containers
+Code Push → Jenkins (Poll SCM) → Build Images → Deploy Containers
 ```
 
 ### Jenkinsfile Overview
